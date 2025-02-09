@@ -9,6 +9,8 @@ public abstract record EntityBase
     {
         CreatedAt = UpdatedAt = DateTime.UtcNow;
     }
+    
+    public int Id { get; init; }
 
     public Guid Guid
     {
