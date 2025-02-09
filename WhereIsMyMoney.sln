@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhereIsMyMoney.API", "WhereIsMyMoney.API\WhereIsMyMoney.API.csproj", "{796D2B8A-24F6-4886-A2D1-FD2376D18F6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhereIsMyMoney.BL", "WhereIsMyMoney.BL\WhereIsMyMoney.BL.csproj", "{7210D20B-AD5E-43F0-A792-3F2F3700E0C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhereIsMyMoney.DAL", "WhereIsMyMoney.DAL\WhereIsMyMoney.DAL.csproj", "{F70BC1EE-B568-4CA8-9C66-F25F30A28E80}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{796D2B8A-24F6-4886-A2D1-FD2376D18F6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{796D2B8A-24F6-4886-A2D1-FD2376D18F6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{796D2B8A-24F6-4886-A2D1-FD2376D18F6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{796D2B8A-24F6-4886-A2D1-FD2376D18F6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7210D20B-AD5E-43F0-A792-3F2F3700E0C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7210D20B-AD5E-43F0-A792-3F2F3700E0C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7210D20B-AD5E-43F0-A792-3F2F3700E0C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7210D20B-AD5E-43F0-A792-3F2F3700E0C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F70BC1EE-B568-4CA8-9C66-F25F30A28E80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F70BC1EE-B568-4CA8-9C66-F25F30A28E80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F70BC1EE-B568-4CA8-9C66-F25F30A28E80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F70BC1EE-B568-4CA8-9C66-F25F30A28E80}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
