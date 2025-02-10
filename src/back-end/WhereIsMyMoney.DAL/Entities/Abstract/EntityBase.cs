@@ -1,4 +1,6 @@
-﻿namespace WhereIsMyMoney.DAL.Entities.Abstract;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WhereIsMyMoney.DAL.Entities.Abstract;
 
 public abstract record EntityBase
 {
@@ -9,7 +11,8 @@ public abstract record EntityBase
     {
         CreatedAt = UpdatedAt = DateTime.UtcNow;
     }
-    
+
+    [Key]
     public int Id { get; init; }
 
     public Guid Guid
