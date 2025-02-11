@@ -1,10 +1,12 @@
 ﻿
 namespace WhereIsMyMoney.DAL.Entities.Payment
 {
-    public class Currency
+    internal class PaymentCategory
     {
         public int Id { get; init; }
+
         public required string Name { get; set; }
-        public required string Code { get; set; }
+
+        public string? Icon { get; set; }
     }
 }
