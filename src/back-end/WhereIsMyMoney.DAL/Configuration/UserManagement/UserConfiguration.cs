@@ -10,7 +10,6 @@ public class UserConfiguration : BaseEntityTypeConfiguration<User>
     {
         base.Configure(modelBuilder);
         modelBuilder.Ignore(x => x.FullName);
-            
         modelBuilder.Property(x => x.FirstName)
             .HasMaxLength(100)
             .IsRequired();
