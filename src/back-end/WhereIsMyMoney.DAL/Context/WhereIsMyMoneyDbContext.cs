@@ -1,6 +1,18 @@
-﻿namespace WhereIsMyMoney.DAL.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using WhereIsMyMoney.DAL.Entities.UserManagement;
 
-public class WhereIsMyMoneyDbContext
+namespace WhereIsMyMoney.DAL.Context;
+
+public class WhereIsMyMoneyDbContext : DbContext
 {
+    public virtual DbSet<User> Users { get; set; }
     
+    public WhereIsMyMoneyDbContext(DbContextOptions<WhereIsMyMoneyDbContext> options) : base(options)
+    {
+    }
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(WhereIsMyMoneyDbContext).Assembly);
+    }
 }
