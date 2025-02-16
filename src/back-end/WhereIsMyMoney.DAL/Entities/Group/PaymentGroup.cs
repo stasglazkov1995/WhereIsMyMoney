@@ -11,5 +11,7 @@ public record PaymentGroup(string Name, int CreatedById, int CurrencyId) : Entit
     public User CreatedBy { get; set; }
     public int CurrencyId { get; set; } = CurrencyId;
     public Currency Currency { get; set; }
+    public ICollection<User> Users { get; set; }
+    public ICollection<GroupToUser> GroupToUsers { get; set; }
 
 }

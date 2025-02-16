@@ -2,12 +2,11 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using WhereIsMyMoney.DAL.Configuration.Abstract;
 using WhereIsMyMoney.DAL.Entities.Group;
-using WhereIsMyMoney.DAL.Entities.CurrencyManagement;
 using WhereIsMyMoney.DAL.Entities.UserManagement;
 
 namespace WhereIsMyMoney.DAL.Configuration.Group;
 
-public class PaymentGroupConfiguration: BaseEntityTypeConfiguration<PaymentGroup>
+public class PaymentGroupConfiguration : BaseEntityTypeConfiguration<PaymentGroup>
 {
     public override void Configure(EntityTypeBuilder<PaymentGroup> modelBuilder)
     {
@@ -18,7 +17,7 @@ public class PaymentGroupConfiguration: BaseEntityTypeConfiguration<PaymentGroup
             .IsRequired();
 
         modelBuilder.HasOne(q => q.CreatedBy)
-            .WithMany(q=> q.PaymentGroups)
+            .WithMany(q => q.PaymentGroups)
             .HasForeignKey(q => q.CreatedById)
             .OnDelete(DeleteBehavior.Restrict);
 
@@ -27,19 +26,12 @@ public class PaymentGroupConfiguration: BaseEntityTypeConfiguration<PaymentGroup
             .HasForeignKey(q => q.CurrencyId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        modelBuilder.HasMany(q => q.Users)
-            .WithMany(q => q.PaymentGroups)
-            .UsingEntity<Dictionary<string,object>>("GroupToUser",
-                q => q.HasOne<User>()
-                      .WithMany()
-                      .HasForeignKey("Id")
-                      .OnDelete(DeleteBehavior.Cascade),
+        modelBuilder.HasMany(e => e.Users)
+        .WithMany(e => e.PaymentGroups)
+        .UsingEntity<GroupToUser>(
+            l => l.HasOne<User>().WithMany().HasForeignKey(e => e.UserId),
+            r => r.HasOne<PaymentGroup>().WithMany().HasForeignKey(e => e.GroupId)
+         );
 
-                q => q.HasOne<PaymentGroup>()
-                      .WithMany()
-                      .HasForeignKey("Id")
-                      .OnDelete(DeleteBehavior.Cascade)
-
-             );
     }
 }
