@@ -15,9 +15,6 @@ namespace WhereIsMyMoney.DAL.Configuration.CurrencyManagement
             modelBuilder.Property(x => x.Code)
                 .HasMaxLength(3)
                 .IsRequired();
-            modelBuilder.Property(x => x.Symbol)
-                .HasMaxLength(5)
-                .IsRequired();
         }
     }
 }
