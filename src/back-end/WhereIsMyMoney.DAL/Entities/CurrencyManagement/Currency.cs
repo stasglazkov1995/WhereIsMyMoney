@@ -1,0 +1,12 @@
+﻿using WhereIsMyMoney.DAL.Entities.Abstract;
+
+namespace WhereIsMyMoney.DAL.Entities.CurrencyManagement
+{
+    public record Currency(string Name, string Code, string Symbol) : EntityBase
+    {
+        public string Name { get; set; } = Name;
+        public string Code { get; set; } = Code;
+        public string Symbol { get; set; } = Symbol;
+
+    }
+}
