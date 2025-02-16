@@ -7,7 +7,7 @@ namespace WhereIsMyMoney.DAL.Entities.Group
     {
         public int UserId { get; set; }
         public User User { get; set; }
-        public int GroupId { get; set; }
+        public int PaymentGroupId { get; set; }
         public PaymentGroup PaymentGroup { get; set; }
 
     }

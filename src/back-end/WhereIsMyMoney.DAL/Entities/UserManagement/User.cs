@@ -13,4 +13,5 @@ public record User(string FirstName, string LastName, string Email, string Passw
     public string Salt { get; set; }
     public string IsDeleted { get; set; }
     public ICollection<PaymentGroup> PaymentGroups { get; set; }
+    public ICollection<GroupToUser> GroupToUsers { get; set; }
 }

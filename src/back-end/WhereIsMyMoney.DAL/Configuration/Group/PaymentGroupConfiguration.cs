@@ -16,11 +16,6 @@ public class PaymentGroupConfiguration : BaseEntityTypeConfiguration<PaymentGrou
             .HasMaxLength(100)
             .IsRequired();
 
-        modelBuilder.HasOne(q => q.CreatedBy)
-            .WithMany(q => q.PaymentGroups)
-            .HasForeignKey(q => q.CreatedById)
-            .OnDelete(DeleteBehavior.Restrict);
-
         modelBuilder.HasOne(q => q.Currency)
             .WithMany(q => q.PaymentGroups)
             .HasForeignKey(q => q.CurrencyId)
@@ -30,7 +25,7 @@ public class PaymentGroupConfiguration : BaseEntityTypeConfiguration<PaymentGrou
         .WithMany(e => e.PaymentGroups)
         .UsingEntity<GroupToUser>(
             l => l.HasOne<User>().WithMany().HasForeignKey(e => e.UserId),
-            r => r.HasOne<PaymentGroup>().WithMany().HasForeignKey(e => e.GroupId)
+            r => r.HasOne<PaymentGroup>().WithMany().HasForeignKey(e => e.PaymentGroupId)
          );
 
     }
