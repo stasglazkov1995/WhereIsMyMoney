@@ -1,5 +1,4 @@
 ﻿using WhereIsMyMoney.DAL.Entities.Abstract;
-using WhereIsMyMoney.DAL.Entities.UserManagement;
 using WhereIsMyMoney.DAL.Entities.CurrencyManagement;
 
 namespace WhereIsMyMoney.DAL.Entities.Group;
@@ -11,6 +10,5 @@ public record PaymentGroup(string Name, int CreatedById, int CurrencyId) : Entit
     public string CreatedByFullName { get; set; }
     public int CurrencyId { get; set; } = CurrencyId;
     public Currency Currency { get; set; }
-    public ICollection<User> Users { get; set; }
-    public ICollection<GroupToUser> GroupToUsers { get; set; }
+    public ICollection<PaymentGroupToUser> PaymentGroupToUsers { get; set; }
 }

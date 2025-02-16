@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using WhereIsMyMoney.DAL.Configuration.Abstract;
 using WhereIsMyMoney.DAL.Entities.Group;
-using WhereIsMyMoney.DAL.Entities.UserManagement;
 
 namespace WhereIsMyMoney.DAL.Configuration.Group;
 
@@ -20,13 +19,5 @@ public class PaymentGroupConfiguration : BaseEntityTypeConfiguration<PaymentGrou
             .WithMany(q => q.PaymentGroups)
             .HasForeignKey(q => q.CurrencyId)
             .OnDelete(DeleteBehavior.Restrict);
-
-        modelBuilder.HasMany(e => e.Users)
-        .WithMany(e => e.PaymentGroups)
-        .UsingEntity<GroupToUser>(
-            l => l.HasOne<User>().WithMany().HasForeignKey(e => e.UserId),
-            r => r.HasOne<PaymentGroup>().WithMany().HasForeignKey(e => e.PaymentGroupId)
-         );
-
     }
 }

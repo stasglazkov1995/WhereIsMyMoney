@@ -3,7 +3,7 @@ using WhereIsMyMoney.DAL.Entities.UserManagement;
 
 namespace WhereIsMyMoney.DAL.Entities.Group
 {
-    public record GroupToUser : EntityBase
+    public record PaymentGroupToUser : EntityBase
     {
         public int UserId { get; set; }
         public User User { get; set; }
