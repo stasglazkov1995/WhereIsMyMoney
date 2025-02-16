@@ -16,12 +16,6 @@ public class PaymentGroupConfiguration: BaseEntityTypeConfiguration<PaymentGroup
             .HasMaxLength(100)
             .IsRequired();
 
-        modelBuilder.Property(x => x.CreatedById)
-            .IsRequired();
-
-        modelBuilder.Property(x => x.CurrencyId)
-            .IsRequired();
-
         modelBuilder.HasOne(q => q.CreatedBy)
             .WithMany(q=> q.PaymentGroups)
             .HasForeignKey(q => q.CreatedById)
