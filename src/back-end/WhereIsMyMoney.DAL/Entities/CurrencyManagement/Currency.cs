@@ -1,4 +1,5 @@
 ﻿using WhereIsMyMoney.DAL.Entities.Abstract;
+using WhereIsMyMoney.DAL.Entities.Group;
 
 namespace WhereIsMyMoney.DAL.Entities.CurrencyManagement
 {
@@ -7,6 +8,7 @@ namespace WhereIsMyMoney.DAL.Entities.CurrencyManagement
         public string Name { get; set; } = Name;
         public string Code { get; set; } = Code;
         public string Symbol { get; set; } = Symbol;
+        public ICollection<PaymentGroup> PaymentGroups { get; set; }
 
     }
 }
