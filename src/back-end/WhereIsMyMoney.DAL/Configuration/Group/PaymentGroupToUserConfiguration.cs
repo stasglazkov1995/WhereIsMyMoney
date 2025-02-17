@@ -1,15 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using WhereIsMyMoney.DAL.Configuration.Abstract;
 using WhereIsMyMoney.DAL.Entities.Group;
 
 namespace WhereIsMyMoney.DAL.Configuration.Group;
 
-public class PaymentGroupToUserConfiguration : BaseEntityTypeConfiguration<PaymentGroupToUser>
+public class PaymentGroupToUserConfiguration 
 {
-    public override void Configure(EntityTypeBuilder<PaymentGroupToUser> modelBuilder)
+    public void Configure(EntityTypeBuilder<PaymentGroupToUser> modelBuilder)
     {
-        base.Configure(modelBuilder);
-
         modelBuilder
             .HasKey(pgu => new { pgu.UserId, pgu.PaymentGroupId });
 
