@@ -11,4 +11,5 @@ public record Payment(decimal Amount, string Name, int CreatedById, int PaymentG
     public int PaymentGroupId { get; set; } = PaymentGroupId;
     public PaymentGroup PaymentGroup { get; set; }
     public bool IsDeleted { get; set; } = false;
+    public ICollection<PaymentPayByUser> PaymentPayByUsers { get; set; }
 }
