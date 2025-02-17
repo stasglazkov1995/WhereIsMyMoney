@@ -7,8 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.13" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.7"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="7.2.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\WhereIsMyMoney.BLL\WhereIsMyMoney.BLL.csproj" />
+      <ProjectReference Include="..\WhereIsMyMoney.DomainModels\WhereIsMyMoney.DomainModels.csproj" />
     </ItemGroup>
 
 </Project>
