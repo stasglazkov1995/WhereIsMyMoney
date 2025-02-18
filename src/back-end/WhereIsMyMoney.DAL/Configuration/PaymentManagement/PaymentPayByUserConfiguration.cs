@@ -1,19 +1,26 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using WhereIsMyMoney.DAL.Configuration.Abstract;
 using WhereIsMyMoney.DAL.Entities.PaymentManagement;
 
 namespace WhereIsMyMoney.DAL.Configuration.PaymentManagement
 {
-    public class PaymentPayByUserConfiguration
+    public class PaymentPayByUserConfiguration : BaseEntityTypeConfiguration<PaymentPayByUser>
     {
-        public void Configure(EntityTypeBuilder<PaymentPayByUser> modelBuilder)
+        public override void Configure(EntityTypeBuilder<PaymentPayByUser> modelBuilder)
         {
+            base.Configure(modelBuilder);
+
+            modelBuilder
+                .HasKey(p => p.Id);
+
             modelBuilder
                 .Property(p => p.Amount)
                 .IsRequired();
            
             modelBuilder
-                .HasKey(ptu => new { ptu.PaymentId, ptu.UserId });
+                .HasIndex(ptu => new { ptu.PaymentId, ptu.UserId })
+                .IsUnique();
 
             modelBuilder
                 .HasOne(ptu => ptu.Payment)

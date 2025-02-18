@@ -1,10 +1,10 @@
-﻿using WhereIsMyMoney.DAL.Entities.UserManagement;
+﻿using WhereIsMyMoney.DAL.Entities.Abstract;
+using WhereIsMyMoney.DAL.Entities.UserManagement;
 
 namespace WhereIsMyMoney.DAL.Entities.PaymentManagement
 {
-    public record PaymentShareWithUser(decimal Amount, int PaymentId, int UserId)
+    public record PaymentShareWithUser(decimal Amount, int PaymentId, int UserId) : EntityBase
     {
-        public int Id { get; init; }
         public decimal Amount { get; set; } = Amount;
         public int PaymentId { get; set; } = PaymentId;
         public Payment Payment { get; set; }
