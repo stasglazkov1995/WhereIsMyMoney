@@ -1,5 +1,6 @@
 ﻿using WhereIsMyMoney.DAL.Entities.Abstract;
 using WhereIsMyMoney.DAL.Entities.Group;
+using WhereIsMyMoney.DAL.Entities.PaymentManagement;
 
 namespace WhereIsMyMoney.DAL.Entities.UserManagement;
 
@@ -13,4 +14,6 @@ public record User(string FirstName, string LastName, string Email, string Passw
     public string Salt { get; set; }
     public string IsDeleted { get; set; }
     public ICollection<PaymentGroupToUser> PaymentGroupToUsers { get; set; }
+    public ICollection<PaymentPayByUser> PaymentPayByUsers { get; set; }
+    public ICollection<PaymentShareWithUser> PaymentShareWithUsers { get; set; }
 }
