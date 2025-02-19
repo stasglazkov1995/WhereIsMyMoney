@@ -1,7 +1,19 @@
 using WhereIsMyMoney.BLL.Abstraction.Services;
 using WhereIsMyMoney.BLL.Services;
+using WhereIsMyMoney.DAL.Context;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+if (builder.Environment.IsDevelopment())
+{
+    builder.Configuration.AddUserSecrets<Program>();
+}
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<WhereIsMyMoneyDbContext>(options =>
+    options.UseSqlServer(connectionString));
 
 builder.Services.AddMvcCore();
 builder.Services.AddHttpContextAccessor();
@@ -17,6 +29,12 @@ builder.Services.AddSwaggerGen().AddSwaggerGenNewtonsoftSupport();
 
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<WhereIsMyMoneyDbContext>();
+    dbContext.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

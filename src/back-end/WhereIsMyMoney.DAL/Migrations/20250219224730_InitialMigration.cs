@@ -76,32 +76,6 @@ namespace WhereIsMyMoney.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Payment",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    CreatedById = table.Column<int>(type: "int", nullable: false),
-                    PaymentGroupId = table.Column<int>(type: "int", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    Guid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Payment", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Payment_PaymentGroups_PaymentGroupId",
-                        column: x => x.PaymentGroupId,
-                        principalTable: "PaymentGroups",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "PaymentGroupToUser",
                 columns: table => new
                 {
@@ -128,6 +102,32 @@ namespace WhereIsMyMoney.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Payments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CreatedById = table.Column<int>(type: "int", nullable: false),
+                    PaymentGroupId = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    Guid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Payments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Payments_PaymentGroups_PaymentGroupId",
+                        column: x => x.PaymentGroupId,
+                        principalTable: "PaymentGroups",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PaymentPayByUser",
                 columns: table => new
                 {
@@ -144,9 +144,9 @@ namespace WhereIsMyMoney.DAL.Migrations
                 {
                     table.PrimaryKey("PK_PaymentPayByUser", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PaymentPayByUser_Payment_PaymentId",
+                        name: "FK_PaymentPayByUser_Payments_PaymentId",
                         column: x => x.PaymentId,
-                        principalTable: "Payment",
+                        principalTable: "Payments",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -174,9 +174,9 @@ namespace WhereIsMyMoney.DAL.Migrations
                 {
                     table.PrimaryKey("PK_PaymentShareWithUser", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PaymentShareWithUser_Payment_PaymentId",
+                        name: "FK_PaymentShareWithUser_Payments_PaymentId",
                         column: x => x.PaymentId,
-                        principalTable: "Payment",
+                        principalTable: "Payments",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -186,11 +186,6 @@ namespace WhereIsMyMoney.DAL.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Payment_PaymentGroupId",
-                table: "Payment",
-                column: "PaymentGroupId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PaymentGroups_CurrencyId",
@@ -219,6 +214,11 @@ namespace WhereIsMyMoney.DAL.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Payments_PaymentGroupId",
+                table: "Payments",
+                column: "PaymentGroupId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PaymentShareWithUser_PaymentId_UserId",
                 table: "PaymentShareWithUser",
                 columns: new[] { "PaymentId", "UserId" },
@@ -243,7 +243,7 @@ namespace WhereIsMyMoney.DAL.Migrations
                 name: "PaymentShareWithUser");
 
             migrationBuilder.DropTable(
-                name: "Payment");
+                name: "Payments");
 
             migrationBuilder.DropTable(
                 name: "Users");

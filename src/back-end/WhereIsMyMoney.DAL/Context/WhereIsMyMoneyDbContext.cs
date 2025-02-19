@@ -2,6 +2,7 @@
 using WhereIsMyMoney.DAL.Entities.CurrencyManagement;
 using WhereIsMyMoney.DAL.Entities.Group;
 using WhereIsMyMoney.DAL.Entities.UserManagement;
+using WhereIsMyMoney.DAL.Entities.PaymentManagement;
 
 namespace WhereIsMyMoney.DAL.Context;
 
@@ -10,7 +11,8 @@ public class WhereIsMyMoneyDbContext : DbContext
     public virtual DbSet<User> Users { get; set; }
     public virtual DbSet<Currency> Currencies { get; set; }
     public virtual DbSet<PaymentGroup> PaymentGroups { get; set; }
-    
+    public virtual DbSet<Payment> Payments { get; set; }
+
     public WhereIsMyMoneyDbContext(DbContextOptions<WhereIsMyMoneyDbContext> options) : base(options)
     {
     }

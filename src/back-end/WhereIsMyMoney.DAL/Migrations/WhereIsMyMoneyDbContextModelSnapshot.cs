@@ -158,7 +158,7 @@ namespace WhereIsMyMoney.DAL.Migrations
 
                     b.HasIndex("PaymentGroupId");
 
-                    b.ToTable("Payment");
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("WhereIsMyMoney.DAL.Entities.PaymentManagement.PaymentPayByUser", b =>

@@ -12,7 +12,7 @@ using WhereIsMyMoney.DAL.Context;
 namespace WhereIsMyMoney.DAL.Migrations
 {
     [DbContext(typeof(WhereIsMyMoneyDbContext))]
-    [Migration("20250219220119_InitialMigration")]
+    [Migration("20250219224730_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -161,7 +161,7 @@ namespace WhereIsMyMoney.DAL.Migrations
 
                     b.HasIndex("PaymentGroupId");
 
-                    b.ToTable("Payment");
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("WhereIsMyMoney.DAL.Entities.PaymentManagement.PaymentPayByUser", b =>
